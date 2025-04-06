@@ -7,6 +7,7 @@ interface RaceState {
   schedule: RaceRound[]
   currentRound: number
   results: RaceResult[]
+  isRunning: boolean
 }
 
 const raceModule: Module<RaceState, any> = {
@@ -14,7 +15,8 @@ const raceModule: Module<RaceState, any> = {
   state: () => ({
     schedule: [],
     currentRound: 0,
-    results: []
+    results: [],
+    isRunning: false
   }),
   mutations: {
     setSchedule(state, schedule: RaceRound[]) {
@@ -22,6 +24,17 @@ const raceModule: Module<RaceState, any> = {
     },
     setResults(state, results: RaceResult[]) {
       state.results = results
+    },
+    setRunning(state, isRunning: boolean) {
+      state.isRunning = isRunning
+    },
+    resetRace(state) {
+      state.schedule = []
+      state.results = []
+      state.currentRound = 0
+    },
+    incrementRound(state) {
+      state.currentRound++
     }
   },
   actions: {
@@ -40,7 +53,7 @@ const raceModule: Module<RaceState, any> = {
         return {
           round: index + 1,
           distance,
-          horses: shuffled.slice(0, 10).map(id => ({ id, name: HORSES[id - 1].name }))
+          horses: shuffled.slice(0, 10).map(id => ({ id, name: HORSES[id - 1].name, color: HORSES[id - 1].color }))
         }
       })
 
@@ -50,7 +63,8 @@ const raceModule: Module<RaceState, any> = {
   getters: {
     raceSchedule: (state) => state.schedule,
     currentRound: (state) => state.currentRound,
-    raceResults: (state) => state.results
+    raceResults: (state) => state.results,
+    isRunning: (state) => state.isRunning
   }
 }
 
