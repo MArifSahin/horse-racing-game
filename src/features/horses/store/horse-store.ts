@@ -1,5 +1,5 @@
 import type { Module } from 'vuex'
-import type { Horse } from '@/types/horse'
+import type { Horse } from '@/features/horses/types/horse'
 import { HORSES } from '@/constants/horse-values'
 interface HorsesState {
   horses: Horse[]
