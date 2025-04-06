@@ -1,0 +1,23 @@
+export const HORSES = [
+    { name: "Ada Lovelace", color: "red" },
+    { name: "Grace Hopper", color: "green" },
+    { name: "Margaret Hamilton", color: "blue" },
+    { name: "Jean Clarke", color: "yellow" },
+    { name: "Alan Turing", color: "purple" },
+    { name: "Tim Berners-Lee", color: "zinc" },
+    { name: "Grace Murray Hopper", color: "pink" },
+    { name: "Donald Knuth", color: "amber" },
+    { name: "Linus Torvalds", color: "stone" },
+    { name: "Steve Jobs", color: "teal" },
+    { name: "Bill Gates", color: "cyan" },
+    { name: "Dennis Ritchie", color: "violet" },
+    { name: "Bjarne Stroustrup", color: "indigo" },
+    { name: "Ken Thompson", color: "fuchsia" },
+    { name: "James Gosling", color: "rose" },
+    { name: "Brendan Eich", color: "sky" },
+    { name: "Guido van Rossum", color: "emerald" },
+    { name: "Yukihiro Matsumoto", color: "orange" },
+    { name: "Anders Hejlsberg", color: "lime" },
+    { name: "Brian Kernighan", color: "slate" },
+  ];
+  
