@@ -29,7 +29,7 @@ const startRace = async () => {
   raceState.value.isPaused = false
   raceState.value.currentRound = store.getters['raceStore/currentRound']
 
-  for (let round = raceState.value.currentRound; round <= 6; round++) {
+  for (let round = raceState.value.currentRound; round < 6; round++) {
     if (raceState.value.isPaused) {
       break
     }
@@ -42,8 +42,8 @@ const startRace = async () => {
 
     const allHorses = store.getters['horseStore/allHorses']
     const rankings = [...horses].sort((a, b) => {
-      const condA = allHorses.find((h: any) => h.id === a)?.condition ?? 0
-      const condB = allHorses.find((h: any) => h.id === b)?.condition ?? 0
+      const condA = allHorses.find((h: any) => h.id === a.id)?.condition ?? 0
+      const condB = allHorses.find((h: any) => h.id === b.id)?.condition ?? 0
       return condB - condA
     })
 
@@ -52,8 +52,7 @@ const startRace = async () => {
       rankings
     })
 
-    // Only increment round if we're not on the last race
-    if (round < 6) {
+    if (round < 5) {
       store.commit('raceStore/incrementRound')
     }
   }
