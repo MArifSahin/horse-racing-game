@@ -38,16 +38,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import { formatOrdinal } from '@/utils/formatters'
 
 const store = useStore()
 const schedule = computed(() => store.getters['raceStore/raceSchedule'])
-
-const formatOrdinal = (n: number) => {
-  const s = ['TH', 'ST', 'ND', 'RD']
-  const v = n % 100
-  return n + (s[(v - 20) % 10] || s[v] || s[0])
-}
 </script>
 
-<style scoped>
-</style>
