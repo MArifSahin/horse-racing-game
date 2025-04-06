@@ -1,9 +1,9 @@
 import { createStore } from 'vuex'
-import horseStore from './modules/horse-store'
+import horseStore from '@/features/horses/store/horse-store'
 
 const store = createStore({
   modules: {
-    horseStore
+    horseStore,
   }
 })
 
