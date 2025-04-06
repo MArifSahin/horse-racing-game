@@ -8,4 +8,9 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /^bg-(red|green|blue|yellow|purple|orange|pink|amber|lime|teal|cyan|violet|indigo|fuchsia|rose|sky|emerald|stone|zinc|slate)-500$/
+    }
+  ],
 }
