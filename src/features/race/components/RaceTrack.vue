@@ -7,6 +7,7 @@
           v-for="i in 10"
           :key="i"
           class="h-[40px] flex items-center justify-center font-bold text-gray-600"
+          :class="activeRound?.horses[i-1] ? `bg-${activeRound.horses[i-1].color}-500` : ''"
         >
           {{ i }}
         </div>
@@ -27,7 +28,6 @@
             class="absolute transition-all duration-1000 ease-out flex items-center"
             :style="{
               top: `${index * 40 + 10}px`,
-              transform: `translateX(${Math.random() * 80 + 10}%)`
             }"
           >
             <span class="inline-block scale-x-[-1]">🐎</span>
