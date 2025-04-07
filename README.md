@@ -48,13 +48,13 @@ src/
 
 ## 🎮 Features
 
-🔄 Generates a race schedule (6 rounds, 10 horses each)
-🧠 Centralized state using Vuex (horses, race, results)
-🏁 Horse races are animated and condition-based
-📊 Round-by-round race results
-🧪 Unit test example for Horse module
-✅ E2E test for Race Schedule functionality using Cypress
-🔄 CI/CD integration via GitHub Actions for E2E testing
+- 🔄 Generates a race schedule (6 rounds, 10 horses each)
+- 🧠 Centralized state using Vuex (horses, race, results)
+- 🏁 Horse races are animated and condition-based
+- 📊 Round-by-round race results
+- 🧪 Unit test example for Horse module
+- ✅ E2E test for Race Schedule functionality using Cypress
+- 🔄 CI/CD integration via GitHub Actions for E2E testing
 
 ## 📸 Screenshot
 
