@@ -1,6 +1,7 @@
 describe('Horse Racing Game', () => {
     beforeEach(() => {
       cy.visit('/')
+      cy.wait(2000) // wait for the page to load
     })
 
     it('loads the page and generates the race schedule', () => {
