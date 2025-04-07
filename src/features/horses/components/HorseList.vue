@@ -20,13 +20,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useStore } from 'vuex'
 import HorseTableHeader from './HorseTableHeader.vue'
 import HorseRow from './HorseRow.vue'
+import { useHorseList } from '../composables/useHorseList'
 
-const store = useStore()
-const horses = computed(() => store.getters['horseStore/allHorses'])
+const { horses } = useHorseList()
 </script>
 
 <style scoped>
