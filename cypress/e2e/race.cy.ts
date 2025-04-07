@@ -1,6 +1,11 @@
+/// <reference types="cypress" />
+
 describe('Horse Racing Game', () => {
     beforeEach(() => {
       cy.visit('/')
+      // Wait for the page to be fully loaded
+      cy.get('h1').should('contain', 'Horse Racing Game')
+      cy.get('button').should('be.visible')
     })
 
     it('loads the page and generates the race schedule', () => {
@@ -18,9 +23,9 @@ describe('Horse Racing Game', () => {
         cy.get('.bg-white.rounded-xl').should('have.length.at.least', 1)
 
         // Verify each round has correct structure
-        cy.get('.bg-white.rounded-xl').each(($round, index) => {
+        cy.get('.bg-white.rounded-xl').each(($round) => {
             // Scroll the round into view
-            cy.wrap($round).scrollIntoView()
+            cy.wrap($round).scrollIntoView({ duration: 0 })
             
             // Check round header
             cy.wrap($round).find('.bg-blue-600').should('be.visible')
