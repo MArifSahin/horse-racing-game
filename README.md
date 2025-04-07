@@ -58,7 +58,7 @@ src/
 
 ## 📸 Screenshot
 
-![Screenshot 2025-04-07 at 12 35 02](https://github.com/user-attachments/assets/b4438edf-3cc9-4edd-b737-654040a1bc9e)
+![Screenshot 2025-04-07 at 12 46 39](https://github.com/user-attachments/assets/93620812-f65b-4388-a527-8f0161f7561b)
 
 
 ## 🧪 Run Tests
