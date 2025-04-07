@@ -36,11 +36,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useStore } from 'vuex'
+import { useRaceSchedule } from '../composables/useRaceSchedule'
 import { formatOrdinal } from '@/utils/formatters'
 
-const store = useStore()
-const schedule = computed(() => store.getters['raceStore/raceSchedule'])
+const { schedule } = useRaceSchedule()
 </script>
 

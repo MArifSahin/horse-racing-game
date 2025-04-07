@@ -1,6 +1,6 @@
 <template>
     <div class="bg-red-500 p-4 flex justify-between items-center">
-      <h1 class="text-white text-xl font-bold">Horse Racing</h1>
+      <h1 class="text-white text-xl font-bold">Horse Racing Game</h1>
       <div class="flex gap-2">
         <button class="px-4 py-2 bg-blue-600 text-white rounded" @click="generate">GENERATE PROGRAM</button>
         <RaceControls :is-enabled="hasGeneratedSchedule" />  
@@ -10,12 +10,19 @@
       <div class="col-span-1">
         <HorseList />
       </div>
-      <div class="col-span-3">
+      <div class="col-span-2">
         <RaceTrack />
         
       </div>
-      <div class="col-span-1">
-        <RaceSchedule v-if="hasGeneratedSchedule" />
+      <div class="col-span-2">
+        <div class="flex gap-4 h-[600px]">
+          <div class="flex-1 overflow-y-auto">
+            <RaceSchedule v-if="hasGeneratedSchedule" />
+          </div>
+          <div class="flex-1 overflow-y-auto">
+            <RaceResults />
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -27,6 +34,7 @@ import HorseList from '@/features/horses/components/HorseList.vue'
 import RaceSchedule from '@/features/race/components/RaceSchedule.vue'
 import RaceTrack from '@/features/race/components/RaceTrack.vue'
 import RaceControls from '@/features/race/components/RaceControls.vue'
+import RaceResults from '@/features/race/components/RaceResults.vue'
 const store = useStore()
 const hasGeneratedSchedule = ref(false)
 
