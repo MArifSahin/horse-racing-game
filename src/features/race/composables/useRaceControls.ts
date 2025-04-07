@@ -12,18 +12,22 @@ export function useRaceControls() {
   const store = useStore()
   const isRunning = computed(() => store.getters['raceStore/isRunning'])
   const raceState = ref<RaceState>({ isPaused: false, currentRound: 0 })
-  const { hasAnyHorseFinished } = useRaceTrack()
+  const { hasAnyHorseFinished, stopAnimation } = useRaceTrack()
+  const allRacesCompleted = computed(() => store.getters['raceStore/currentRound'] >= 6)
 
   const startRace = async () => {
+    if (allRacesCompleted.value) return
+    
     raceState.value.isPaused = false
     raceState.value.currentRound = store.getters['raceStore/currentRound']
     store.commit('raceStore/setRunning', true)
 
     for (let round = raceState.value.currentRound; round < 6; round++) {
-      if (round < 6) {
+      if (round < 6 || !raceState.value.isPaused) {
         store.commit('raceStore/incrementRound')
       }
       if (raceState.value.isPaused) {
+        store.commit('raceStore/decrementRound')
         break
       }
 
@@ -43,6 +47,7 @@ export function useRaceControls() {
       })
 
       if (raceState.value.isPaused) {
+        store.commit('raceStore/decrementRound')
         break
       }
 
@@ -71,11 +76,13 @@ export function useRaceControls() {
   const pauseRace = () => {
     raceState.value.isPaused = true
     store.commit('raceStore/setRunning', false)
+    stopAnimation()
   }
 
   return {
     isRunning,
     startRace,
-    pauseRace
+    pauseRace,
+    allRacesCompleted
   }
 } 

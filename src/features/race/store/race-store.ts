@@ -35,6 +35,9 @@ const raceModule: Module<RaceState, any> = {
     },
     incrementRound(state) {
       state.currentRound++
+    },
+    decrementRound(state) {
+      state.currentRound--
     }
   },
   actions: {

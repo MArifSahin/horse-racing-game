@@ -25,10 +25,18 @@ export function useRaceTrack() {
   const raceFinished = ref(false)
   const frameCount = ref(0)
   const roundDistance = ref(0)
+  const animationFrameId = ref<number | null>(null)
 
   const hasAnyHorseFinished = computed(() => {
     return runningHorses.value.some(horse => horse.finished)
   })
+
+  const stopAnimation = () => {
+    if (animationFrameId.value !== null) {
+      cancelAnimationFrame(animationFrameId.value)
+      animationFrameId.value = null
+    }
+  }
 
   watch(activeRound, (round) => {
     roundDistance.value = round?.distance ?? 0
@@ -49,10 +57,17 @@ export function useRaceTrack() {
       }
     })
 
-    requestAnimationFrame(updatePositions)
+    if (isRunning.value) {
+      animationFrameId.value = requestAnimationFrame(updatePositions)
+    }
   })
 
   function updatePositions() {
+    if (!isRunning.value) {
+      animationFrameId.value = null
+      return
+    }
+
     frameCount.value++
 
     let anyRunning = false
@@ -71,10 +86,11 @@ export function useRaceTrack() {
       }
     })
 
-    if (anyRunning) {
-      requestAnimationFrame(updatePositions)
+    if (anyRunning && isRunning.value) {
+      animationFrameId.value = requestAnimationFrame(updatePositions)
     } else {
       raceFinished.value = true
+      animationFrameId.value = null
     }
   }
 
@@ -84,6 +100,7 @@ export function useRaceTrack() {
     runningHorses,
     roundDistance,
     raceFinished,
-    hasAnyHorseFinished
+    hasAnyHorseFinished,
+    stopAnimation
   }
 } 
